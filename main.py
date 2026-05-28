@@ -33,15 +33,12 @@ def get_tasks():
 
 # Create task
 @app.post("/tasks/{text}")
-def create_task(text: str):
-    db = SessionLocal()
+def add_task(text: str):
+    task = {
+        "id": len(tasks) + 1,
+        "text": text
+    }
 
-    new_task = Task(text=text)
+    tasks.append(task)
 
-    db.add(new_task)
-
-    db.commit()
-
-    db.refresh(new_task)
-
-    return new_task
+    return {"message": "Task added"}
