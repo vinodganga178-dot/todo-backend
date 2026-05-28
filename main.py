@@ -42,7 +42,6 @@ def add_task(text: str):
     tasks.append(task)
 
     return {"message": "Task added"}
-
 @app.delete("/tasks/{id}")
 def delete_task(id: int):
     global tasks
