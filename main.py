@@ -19,13 +19,14 @@ def get_tasks():
     return tasks
 
 # ADD task
-@app.post("/tasks/{text}")
-def add_task(text: str):
+@app.post("/tasks/{username}/{text}")
+def add_task(username: str, text: str):
 
     task = {
         "id": len(tasks) + 1,
         "text": text,
-        "done": False
+        "done": False,
+        "user": username
     }
 
     tasks.append(task)
